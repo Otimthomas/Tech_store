@@ -1,11 +1,14 @@
 import React from "react";
 
+import { linkData } from "./linkData";
+
 const ProductContext = React.createContext();
 
 const ProductProvider = ({ children }) => {
   const [sidebarOpen, setSidebarOpen] = React.useState(false);
   const [cartOpen, setCartOpen] = React.useState(false);
-  const [cartItems, setCartItems] = React.useState(0);
+  const [cartItems, setCartItems] = React.useState(1);
+  const [links, setLinks] = React.useState(linkData);
 
   //handle sidebar
   const handleSidebar = () => {
@@ -36,6 +39,7 @@ const ProductProvider = ({ children }) => {
         cartOpen,
         cartItems,
         sidebarOpen,
+        links,
         handleSidebar,
         handleCart,
         closeCart,

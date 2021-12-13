@@ -8,7 +8,7 @@ import logo from "../images/logo.svg";
 const Navbar = () => {
   const { handleSidebar, cartItems } = React.useContext(ProductContext);
   return (
-    <NavWrapper>
+    <NavWrapper className="bg-light">
       <div className="container">
         <div className="d-flex justify-content-between">
           <FaBars className="icon" onClick={handleSidebar} />
@@ -26,10 +26,15 @@ const Navbar = () => {
 export default Navbar;
 
 const NavWrapper = styled.div`
+  position: sticky;
+  top: 0;
   padding-top: 1.5rem;
   padding-bottom: 1rem;
+  border-bottom: 3px solid var(--primaryColor);
+
   .icon {
     font-size: 2.5rem;
+    cursor: pointer;
   }
   .cart {
     position: relative;
@@ -45,7 +50,7 @@ const NavWrapper = styled.div`
       font-weight: bold;
       position: absolute;
       top: -1rem;
-      right: -1rem;
+      right: -1.5rem;
     }
   }
 `;
