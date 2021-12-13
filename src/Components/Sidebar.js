@@ -5,9 +5,9 @@ import { NavLink } from "react-router-dom";
 import { ProductContext } from "../Context";
 
 const Sidebar = () => {
-  const { links, sidebarOpen } = React.useContext(ProductContext);
+  const { links, sidebarOpen, closeSidebar } = React.useContext(ProductContext);
   return (
-    <SideWrapper show={sidebarOpen}>
+    <SideWrapper show={sidebarOpen} onClick={closeSidebar}>
       <ul>
         {links.map((link) => {
           return (

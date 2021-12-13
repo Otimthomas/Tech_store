@@ -6,7 +6,8 @@ import { ProductContext } from "../Context";
 import logo from "../images/logo.svg";
 
 const Navbar = () => {
-  const { handleSidebar, cartItems } = React.useContext(ProductContext);
+  const { handleCart, handleSidebar, cartItems } =
+    React.useContext(ProductContext);
   return (
     <NavWrapper className="bg-light">
       <div className="container">
@@ -14,7 +15,7 @@ const Navbar = () => {
           <FaBars className="icon" onClick={handleSidebar} />
           <img className="logo" src={logo} />
           <div className="cart">
-            <FaCartPlus className="icon cart__icon" />
+            <FaCartPlus className="icon cart__icon" onClick={handleCart} />
             <p className="cart__number">{cartItems}</p>
           </div>
         </div>

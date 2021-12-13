@@ -18,6 +18,11 @@ const ProductProvider = ({ children }) => {
     console.log(`The side bar is ${sidebarOpen}`);
   };
 
+  // close sidebar
+  const closeSidebar = () => {
+    setSidebarOpen(false);
+  };
+
   //handle cart
   const handleCart = () => {
     setCartOpen(!cartOpen);
@@ -40,6 +45,7 @@ const ProductProvider = ({ children }) => {
         cartItems,
         sidebarOpen,
         links,
+        closeSidebar,
         handleSidebar,
         handleCart,
         closeCart,
