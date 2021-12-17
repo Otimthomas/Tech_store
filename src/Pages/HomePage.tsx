@@ -1,11 +1,18 @@
 import React from "react";
 
 import styled from "styled-components";
+import { Link } from "react-router-dom";
+
+import Hero from "../Components/Hero";
 
 function HomePage() {
   return (
     <HomeWrapper>
-      <h1>Hello from the Home page</h1>
+      <Hero max title="awesome gadgets">
+        <Link to="/products" className="text-uppercase">
+          Our Products
+        </Link>
+      </Hero>
     </HomeWrapper>
   );
 }
@@ -13,5 +20,24 @@ function HomePage() {
 export default HomePage;
 
 const HomeWrapper = styled.div`
-  height: 1000px;
+  background: url();
+
+  a {
+    color: var(--primaryColor);
+    text-decoration: none;
+    border: none;
+    padding: 1rem 2rem;
+    transition: all 0.3s;
+    outline: 3px solid var(--primaryColor);
+    outline-offset: 4px;
+    background-color: var(--primaryColor);
+    color: var(--mainWhite);
+    letter-spacing: var(--mainSpacing);
+
+    &:hover {
+      color: var(--primaryColor);
+      background-color: var(--darkGrey);
+      outline: 3px solid var(--darkGrey);
+    }
+  }
 `;
