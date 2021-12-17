@@ -4,6 +4,10 @@ import { NavLink } from "react-router-dom";
 
 import { ProductContext } from "../Context";
 
+type SidebarProps = {
+  show: boolean;
+};
+
 const Sidebar = () => {
   const { links, sidebarOpen, closeSidebar } = React.useContext(ProductContext);
   return (
@@ -30,7 +34,8 @@ const SideWrapper = styled.div`
   width: 100%;
   height: 100%;
   border-right: 4px solid var(--primaryColor);
-  transform: ${(props) => (props.show ? "translate(0)" : "translateX(-100%)")};
+  transform: ${(props: SidebarProps) =>
+    props.show ? "translate(0)" : "translateX(-100%)"};
   transition: var(--mainTransition);
 
   ul {

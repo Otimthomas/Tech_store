@@ -2,7 +2,7 @@ import React from "react";
 
 import { FaBars, FaCartPlus } from "react-icons/fa";
 import styled from "styled-components";
-import { ProductContext } from "../Context";
+import { ProductContext } from "../Context/context";
 import logo from "../images/logo.svg";
 
 const Navbar = () => {
@@ -13,7 +13,7 @@ const Navbar = () => {
       <div className="container">
         <div className="d-flex justify-content-between">
           <FaBars className="icon" onClick={handleSidebar} />
-          <img className="logo" src={logo} />
+          <img className="logo" src={logo} alt="logo" />
           <div className="cart">
             <FaCartPlus className="icon cart__icon" onClick={handleCart} />
             <p className="cart__number">{cartItems}</p>

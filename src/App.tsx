@@ -8,6 +8,7 @@ import AboutPage from "./Pages/AboutPage";
 import CartPage from "./Pages/CartPage";
 import ProductsPage from "./Pages/ProductsPage";
 import SingleProductPage from "./Pages/SingleProductPage";
+import ContactPage from "./Pages/ContactPage";
 import Default from "./Pages/Default";
 
 import Navbar from "./Components/Navbar";
@@ -27,6 +28,7 @@ function App() {
         <Route path="/cart" element={<CartPage />}></Route>
         <Route path="/products/:id" element={<SingleProductPage />}></Route>
         <Route path="/products" element={<ProductsPage />}></Route>
+        <Route path="/contact" element={<ContactPage />}></Route>
         <Route path="*" element={<Default />}></Route>
       </Routes>
       <Footer />

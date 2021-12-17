@@ -1,7 +1,11 @@
 import React from "react";
 import styled from "styled-components";
 
-import { ProductContext } from "../Context";
+import { ProductContext } from "../Context/context";
+
+type SideCartProps = {
+  show: boolean;
+};
 
 const SideCart = () => {
   const { cartOpen, closeCart } = React.useContext(ProductContext);
@@ -18,7 +22,8 @@ const CartWrapper = styled.div`
   height: 100%;
   width: 100%;
   border-left: 4px solid var(--primaryColor);
-  transform: ${(props) => (props.show ? "translateX(0)" : "translateX(100%)")};
+  transform: ${(props: SideCartProps) =>
+    props.show ? "translateX(0)" : "translateX(100%)"};
   transition: var(--mainTransition);
 
   @media (min-width: 576px) {

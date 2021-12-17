@@ -1,4 +1,4 @@
-export const linkData = [
+export const linkData: { id: number; text: string; path: string }[] = [
   {
     id: 1,
     text: "home",
@@ -12,7 +12,7 @@ export const linkData = [
   {
     id: 3,
     text: "product",
-    path: "/product",
+    path: "/products",
   },
   {
     id: 4,
