@@ -3,21 +3,21 @@ import styled from "styled-components";
 import mainBcg from "../images/mainBcg.jpeg";
 
 type HeroProps = {
-  children: React.ReactNode;
+  children?: React.ReactNode;
   img?: string;
   title?: string;
-  max: boolean;
+  max?: boolean;
 };
 
-function Hero(props: HeroProps) {
+function Hero({ children, img, title, max }: HeroProps) {
   return (
     <HeroWrapper
-      max={props.max}
+      $max={max}
       className="d-flex justify-content-center align-items-center"
-      img={props.img}
+      img={img}
     >
-      <h2>{props.title}</h2>
-      {props.children}
+      <h2>{title}</h2>
+      {children}
     </HeroWrapper>
   );
 }
@@ -26,8 +26,13 @@ function Hero(props: HeroProps) {
 // This is how you declare WrapperProps for styled components ?
 //
 type HeroWrapperProps = {
-  max?: boolean;
+  $max?: boolean;
   img?: string;
+};
+
+Hero.defaultProps = {
+  img: mainBcg,
+  $max: false,
 };
 
 export default Hero;
@@ -37,11 +42,11 @@ const HeroWrapper = styled.div<HeroWrapperProps>`
   flex-direction: column;
 
   background-color: lightgray;
-  min-height: ${(props: HeroWrapperProps) => (props.max ? "100vh" : "60vh")};
+  min-height: ${({ $max }) => ($max?.toString() ? "100vh" : "60vh")};
   font-size: 2rem;
 
   background: linear-gradient(var(--primaryRGBA), var(--primaryRGBA)),
-    url(${(props) => props.img}) no-repeat center/cover;
+    url(${({ img }) => img}) no-repeat center/cover;
 
   h2 {
     font-size: 3.5rem;
@@ -52,7 +57,3 @@ const HeroWrapper = styled.div<HeroWrapperProps>`
     text-shadow: 2px 6px 3px var(--primaryRGBA);
   }
 `;
-
-Hero.defaultProps = {
-  img: mainBcg,
-};

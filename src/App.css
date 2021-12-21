@@ -65,3 +65,23 @@ body {
 .text-main {
   color: var(--primaryColor);
 }
+
+.main-link {
+  color: var(--primaryColor);
+  text-decoration: none;
+  text-transform: uppercase;
+  border: none;
+  padding: 1rem 2rem;
+  transition: all 0.3s;
+  outline: 3px solid var(--primaryColor);
+  outline-offset: 4px;
+  background-color: var(--primaryColor);
+  color: var(--mainWhite);
+  letter-spacing: var(--mainSpacing);
+}
+
+.main-link:hover {
+  color: var(--primaryColor);
+  background-color: var(--darkGrey);
+  outline: 3px solid var(--darkGrey);
+}
