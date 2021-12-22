@@ -11,6 +11,7 @@ function Contact() {
           <Title title="Contact" />
           <form
             action="https://formspree.io/f/totim1992@gmail.com"
+            method="POST"
             className="mt-5"
           >
             {/* First */}

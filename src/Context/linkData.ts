@@ -1,4 +1,6 @@
-export const linkData: { id: number; text: string; path: string }[] = [
+export type LinkDataProps = { id: number; text: string; path: string }[];
+
+export const linkData: LinkDataProps = [
   {
     id: 1,
     text: "home",

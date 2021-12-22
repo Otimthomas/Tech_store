@@ -1,17 +1,15 @@
 import React from "react";
 
-import { linkData } from "./linkData";
+import { linkData, LinkDataProps } from "./linkData";
+import { socialData, SocialDataProps } from "./socialData";
 
 type ProductContextProps = {
   sidebarOpen: boolean;
   handleCart: () => void;
   handleSidebar: () => void;
   cartItems: number;
-  links: {
-    id: number;
-    text: string;
-    path: string;
-  }[];
+  links: LinkDataProps;
+  socialLinks: SocialDataProps;
   closeSidebar: () => void;
   cartOpen: boolean;
   closeCart: () => void;
@@ -22,7 +20,8 @@ const ProductContextDefault: ProductContextProps = {
   handleCart: () => {},
   handleSidebar: () => {},
   cartItems: 1,
-  links: [],
+  links: linkData,
+  socialLinks: socialData,
   closeSidebar: () => {},
   cartOpen: false,
   closeCart: () => {},
@@ -38,13 +37,8 @@ const ProductProvider = ({ children }: ProductProviderProps) => {
   const [sidebarOpen, setSidebarOpen] = React.useState<boolean>(false);
   const [cartOpen, setCartOpen] = React.useState<boolean>(false);
   const [cartItems, setCartItems] = React.useState<number>(1);
-  const [links, setLinks] = React.useState<
-    | {
-        id: number;
-        text: string;
-        path: string;
-      }[]
-  >(linkData);
+  const [links, setLinks] = React.useState(linkData);
+  const [socialLinks, setSocialLinks] = React.useState(socialData);
 
   //handle sidebar
   const handleSidebar = () => {
@@ -82,6 +76,7 @@ const ProductProvider = ({ children }: ProductProviderProps) => {
         handleSidebar,
         cartItems,
         links,
+        socialLinks,
         closeSidebar,
         cartOpen,
         closeCart,
