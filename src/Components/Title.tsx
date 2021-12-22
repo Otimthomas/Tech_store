@@ -27,6 +27,10 @@ type TitleWrapperProps = {
 const TitleWrapper = styled.div<TitleWrapperProps>`
   text-align: ${({ $center }) => ($center ? "center" : "left")};
 
+  h2 {
+    text-transform: uppercase;
+  }
+
   .title-underline {
     height: 0.25rem;
     width: 7rem;
