@@ -13,7 +13,7 @@ export const linkData: LinkDataProps = [
   },
   {
     id: 3,
-    text: "product",
+    text: "products",
     path: "/products",
   },
   {

@@ -33,6 +33,7 @@ type ProductContextProps = {
   loading: boolean;
   singleProduct: {};
   singleProductSet: (id: number) => void;
+  filteredProducts: StoreProductsProps;
 };
 
 const ProductContextDefault: ProductContextProps = {
@@ -53,6 +54,7 @@ const ProductContextDefault: ProductContextProps = {
   loading: false,
   singleProduct: {},
   singleProductSet: () => {},
+  filteredProducts: [],
 };
 
 const ProductContext = React.createContext(ProductContextDefault);
@@ -178,6 +180,7 @@ const ProductProvider = ({ children }: ProductProviderProps) => {
         featuredProducts,
         loading,
         singleProduct,
+        filteredProducts,
         handleCart,
         handleSidebar,
         closeSidebar,

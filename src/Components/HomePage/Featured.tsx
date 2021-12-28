@@ -12,7 +12,7 @@ function Featured() {
       <div className="container">
         <Title title="Featured products" center />
         {/* Products */}
-        <div className="row">
+        <div className="row my-5">
           {featuredProducts.map((item) => {
             return <Product key={item.id} product={item} />;
           })}

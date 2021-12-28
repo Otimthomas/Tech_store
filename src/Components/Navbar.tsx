@@ -32,6 +32,7 @@ const NavWrapper = styled.div`
   padding-top: 1.5rem;
   padding-bottom: 1rem;
   border-bottom: 3px solid var(--primaryColor);
+  z-index: 1000;
 
   .icon {
     font-size: 2.5rem;

@@ -37,6 +37,7 @@ const SideWrapper = styled.div`
   transform: ${(props: SidebarProps) =>
     props.show ? "translate(0)" : "translateX(-100%)"};
   transition: var(--mainTransition);
+  z-index: 999;
 
   ul {
     list-style: none;
@@ -57,7 +58,7 @@ const SideWrapper = styled.div`
     &:hover {
       color: #fff;
       background-color: var(--primaryColor);
-      padding: 3rem 4rem;
+      padding: 2rem 3rem;
     }
   }
 
