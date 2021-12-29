@@ -5,7 +5,6 @@ import { ProductContext } from "../Context";
 
 function Footer() {
   const { socialLinks } = React.useContext(ProductContext);
-  console.log(socialLinks);
   return (
     <FooterWrapper>
       <div className="container py-4">

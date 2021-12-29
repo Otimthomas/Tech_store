@@ -1,4 +1,5 @@
 import React from "react";
+import { useStateWithCallbackLazy } from "use-state-with-callback";
 
 import { linkData, LinkDataProps } from "./linkData";
 import { socialData, SocialDataProps } from "./socialData";
@@ -14,6 +15,18 @@ export type StoreProductsProps = {
   featured: boolean;
   image: string;
 }[];
+
+type StoreProductProps = {
+  id: number;
+  title: string;
+  price: number;
+  company: string;
+  description: string;
+  featured: boolean;
+  image: string;
+  count: number;
+  total: number;
+};
 
 type ProductContextProps = {
   sidebarOpen: boolean;
@@ -70,7 +83,7 @@ const ProductProvider = ({ children }: ProductProviderProps) => {
   const [links, setLinks] = React.useState(linkData);
   const [socialLinks, setSocialLinks] = React.useState(socialData);
   const [services, setServices] = React.useState(ServicesData);
-  const [cart, setCart] = React.useState([]);
+  const [cart, setCart] = useStateWithCallbackLazy<StoreProductsProps>([]);
   const [cartSubTotal, setCartSubTotal] = React.useState<number>(0);
   const [cartTax, setCartTax] = React.useState<number>(0);
   const [cartTotal, setCartTotal] = React.useState<number>(0);
@@ -105,7 +118,7 @@ const ProductProvider = ({ children }: ProductProviderProps) => {
     setFeaturedProducts(featuredProducts);
     setFilteredProducts(storeProducts);
     setLoading(false);
-    setCart(getStorageCart());
+    // setCart(getStorageCart());
     setSingleProduct(getStorageProduct());
   };
 
@@ -120,7 +133,10 @@ const ProductProvider = ({ children }: ProductProviderProps) => {
   };
 
   // get totals
-  const getTotal = () => {};
+  const getTotal = () => {
+    let subtotal = 0;
+    let cartItems = 0;
+  };
 
   // addTotals
   const addTotals = () => {};
@@ -130,7 +146,29 @@ const ProductProvider = ({ children }: ProductProviderProps) => {
 
   // add to cart
   const addToCart = (id: number) => {
-    console.log(`add to cart ${id}`);
+    let tempCart = [...cart];
+    let tempProducts = [...storeProducts];
+    let tempItem = tempCart.find((item) => item.id === id) as StoreProductProps;
+
+    if (!tempItem) {
+      tempItem = tempProducts.find(
+        (item) => item.id === id
+      ) as StoreProductProps;
+      let total = tempItem?.price;
+      let cartItem = { ...tempItem, count: 1, total };
+      tempCart = [...tempCart, cartItem];
+    } else {
+      tempItem.count++;
+      tempItem.total = tempItem.price * tempItem.count;
+      tempItem.total = parseFloat(tempItem.total.toFixed(2));
+    }
+    setCart(tempCart, () => {
+      addTotals();
+      syncStorage();
+      openCart();
+      console.log("the call back run");
+    });
+    console.log("the function finished");
   };
 
   // set single product
@@ -164,6 +202,7 @@ const ProductProvider = ({ children }: ProductProviderProps) => {
   // open Cart
   const openCart = () => {
     setCartOpen(true);
+    console.log("open cart");
   };
 
   return (
